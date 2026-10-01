@@ -4,7 +4,7 @@ import {
   dashboardStyles,
   trendStyles,
   chartStyles,
-} from "../assets/dummyStyles";
+} from "../assets/styles";
 import {
   GAUGE_COLORS,
   COLORS,

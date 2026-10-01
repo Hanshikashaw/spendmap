@@ -1,6 +1,6 @@
 import { getToken } from "../utils/auth";
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { profileStyles } from "../assets/dummyStyles";
+import { profileStyles } from "../assets/styles";
 import Modal from "react-modal";
 import { Eye, EyeOff, Lock, User, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";

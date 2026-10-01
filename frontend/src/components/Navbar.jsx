@@ -1,6 +1,6 @@
 import { getToken } from "../utils/auth";
 import React, { useEffect, useRef, useState } from "react";
-import { navbarStyles } from "../assets/dummyStyles";
+import { navbarStyles } from "../assets/styles";
 import img1 from "../assets/logo.png";
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";

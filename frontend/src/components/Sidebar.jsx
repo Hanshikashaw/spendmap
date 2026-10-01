@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { sidebarStyles, cn } from "../assets/dummyStyles";
+import { sidebarStyles, cn } from "../assets/styles";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {

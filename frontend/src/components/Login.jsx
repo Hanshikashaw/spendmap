@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { loginStyles } from "../assets/dummyStyles";
+import { loginStyles } from "../assets/styles";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";

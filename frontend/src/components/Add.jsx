@@ -1,5 +1,5 @@
 import React from "react";
-import { modalStyles } from "../assets/dummyStyles";
+import { modalStyles } from "../assets/styles";
 import { X } from "lucide-react";
 
 const AddTransactionModal = ({

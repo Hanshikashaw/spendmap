@@ -29,7 +29,7 @@ import TransactionItem from "../components/TransactionItem";
 import AddTransactionModal from "../components/Add";
 import { getTimeFrameRange, generateChartPoints } from "../components/Helpers";
 import { CATEGORY_ICONS } from "../assets/color";
-import { expensePageStyles as styles } from "../assets/dummyStyles";
+import { expensePageStyles as styles } from "../assets/styles";
 
 const API_BASE = "http://localhost:4000/api";
 

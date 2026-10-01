@@ -1,4 +1,4 @@
-// assets/dummyStyles.js
+// assets/styles.js
 
 export const dashboardStyles = {
   // Layout styles
@@ -116,7 +116,7 @@ export const chartStyles = {
   pieChart: "lg:-px-5 lg:text-xs xl:text-xl",
 };
 
-// Add to existing dummyStyles.js
+// Add to existing styles.js
 export const incomeStyles = {
   // Layout
   wrapper: "space-y-4 md:space-y-6 p-3 md:p-4 max-w-7xl mx-auto",
@@ -317,7 +317,7 @@ export const profileStyles = {
   errorText: "mt-1 text-sm text-red-600"
 };
 
-// Add to existing dummyStyles.js
+// Add to existing styles.js
 export const modalStyles = {
   // Modal container
   overlay: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50",
@@ -362,7 +362,7 @@ export const modalStyles = {
 
 
 
-// In src/assets/dummyStyles.js - add these styles
+// In src/assets/styles.js - add these styles
 export const loginStyles = {
   // Page container
   pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-teal-50 to-emerald-50",
@@ -448,7 +448,7 @@ export const navbarStyles = {
 };
 
 
-// In src/assets/dummyStyles.js - add these styles
+// In src/assets/styles.js - add these styles
 export const signupStyles = {
   // Page container (reusing from login)
   pageContainer: "min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-teal-50 to-emerald-50",
@@ -628,7 +628,7 @@ export const sidebarStyles = {
 // Helper function to combine class names
 export const cn = (...classes) => classes.filter(Boolean).join(" ");
 
-// assets/dummyStyles.js
+// assets/styles.js
 
 export const styles = {
   // Layout and Container Styles
