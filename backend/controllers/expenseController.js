@@ -93,7 +93,11 @@ export async function updateExpense(req, res) {
 // delete an expense
 export async function deleteExpense(req, res) {
     try {
-        const expense = await expenseModel.findByIdAndDelete({ _id: req.params.id });
+        const userId = req.user._id;
+        const expense = await expenseModel.findOneAndDelete({
+            _id: req.params.id,
+            userId,
+        });
         if (!expense) {
             return res.status(404).json({
                 success: false,
