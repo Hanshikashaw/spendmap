@@ -59,12 +59,12 @@ export async function getAllIncome(req, res) {
 export async function updateIncome(req, res) {
     const { id } = req.params;
     const userId = req.user._id;
-    const { description, amount } = req.body;
+    const { description, amount, category, date } = req.body;
 
     try {
         const updatedIncome = await incomeModel.findOneAndUpdate(
             { _id: id, userId },
-            { description, amount },
+            { description, amount, category, date },
             { new: true }
         );
 

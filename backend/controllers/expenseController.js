@@ -59,12 +59,12 @@ export async function getAllExpense(req, res) {
 export async function updateExpense(req, res) {
     const { id } = req.params;
     const userId = req.user._id;
-    const { description, amount } = req.body;
+    const { description, amount, category, date } = req.body;
 
     try {
         const updatedExpense = await expenseModel.findOneAndUpdate(
             { _id: id, userId },
-            { description, amount },
+            { description, amount, category, date },
             { new: true }
         );
 
