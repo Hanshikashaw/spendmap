@@ -31,7 +31,7 @@ import { getTimeFrameRange, generateChartPoints } from "../components/Helpers";
 import { CATEGORY_ICONS } from "../assets/color";
 import { expensePageStyles as styles } from "../assets/styles";
 
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
 
 /**
  * Helper: convert date (or datetime) to ISO by attaching client current time
