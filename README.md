@@ -29,7 +29,7 @@ SpendMap is a personal finance tracking web application that helps users manage 
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_GITHUB_REPOSITORY_URL
+   git clone https://github.com/Hanshikashaw/spendmap
    ```
 
 2. Navigate to the project folder:
