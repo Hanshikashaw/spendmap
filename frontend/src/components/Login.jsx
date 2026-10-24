@@ -105,7 +105,7 @@ const Login = ({ onLogin, API_URL = import.meta.env.VITE_API_URL }) => {
           </div>
           <h1 className={loginStyles.headerTitle}>Welcome Back</h1>
           <p className={loginStyles.headerSubtitle}>
-            Sign in to your ExpenseTracker account
+            Sign in to your SpendMap account
           </p>
         </div>
 

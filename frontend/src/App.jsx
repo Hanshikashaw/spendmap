@@ -18,11 +18,7 @@ import Profile from "./pages/Profile";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-// to get transaction from localstorage
-const getTransactionsFromStorage = () => {
-  const saved = localStorage.getItem("transactions");
-  return saved ? JSON.parse(saved) : [];
-};
+
 
 // to protect the routes
 const ProtectedRoute = ({ user, children }) => {
@@ -49,7 +45,6 @@ const ScrollToTop = () => {
 const App = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [transactions, setTransactions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -131,7 +126,7 @@ const App = () => {
             const res = await axios.get(`${API_URL}/api/user/me`, {
               headers: { Authorization: `Bearer ${storedToken}` },
             });
-            const profile = res.data;
+            const profile = res.data.user || res.data;
             persistAuth(profile, storedToken, tokenFromLocal);
           } catch (fetchErr) {
             console.warn(
@@ -145,23 +140,11 @@ const App = () => {
         console.error("error bootstrapping auth:", err);
       } finally {
         setIsLoading(false);
-
-        try {
-          setTransactions(getTransactionsFromStorage());
-        } catch (txErr) {
-          console.error("Error loading transactions:", txErr);
-        }
       }
     })();
   }, []);
 
-  useEffect(() => {
-    try {
-      localStorage.setItem("transactions", JSON.stringify(transactions));
-    } catch (err) {
-      console.error("error saving transactions:", err);
-    }
-  }, [transactions]);
+ 
 
   const handleLogin = (userData, remember = false, tokenFromApi = null) => {
     persistAuth(userData, tokenFromApi, remember);
@@ -178,18 +161,7 @@ const App = () => {
     navigate("/login");
   };
 
-  // transaction helpers
-  const addTransaction = (newTransaction) =>
-    setTransactions((p) => [newTransaction, ...p]);
-  const editTransaction = (id, updatedTransaction) =>
-    setTransactions((p) =>
-      p.map((t) => (t.id === id ? { ...updatedTransaction, id } : t)),
-    );
-  const deleteTransaction = (id) =>
-    setTransactions((p) => p.filter((t) => t.id !== id));
-  const refreshTransactions = () =>
-    setTransactions(getTransactionsFromStorage());
-
+  
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -215,51 +187,15 @@ const App = () => {
               <Layout
                 user={user}
                 onLogout={handleLogout}
-                transactions={transactions}
-                addTransaction={addTransaction}
-                editTransaction={editTransaction}
-                deleteTransaction={deleteTransaction}
-                refreshTransactions={refreshTransactions}
+                
               />
             </ProtectedRoute>
           }
         >
-          <Route
-            path="/"
-            element={<Dashboard />}
-            transactions={transactions}
-            addTransaction={addTransaction}
-            editTransaction={editTransaction}
-            deleteTransaction={deleteTransaction}
-            refreshTransactions={refreshTransactions}
-          />
-
-          <Route
-            path="/income"
-            element={
-              <Income
-                transactions={transactions}
-                addTransaction={addTransaction}
-                editTransaction={editTransaction}
-                deleteTransaction={deleteTransaction}
-                refreshTransactions={refreshTransactions}
-              />
-            }
-          />
-
-          <Route
-            path="/expense"
-            element={
-              <Expense
-                transactions={transactions}
-                addTransaction={addTransaction}
-                editTransaction={editTransaction}
-                deleteTransaction={deleteTransaction}
-                refreshTransactions={refreshTransactions}
-              />
-            }
-          />
-
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/income" element={<Income />} />
+          <Route path="/expense" element={<Expense />} />
+          
           <Route
             path="/profile"
             element={

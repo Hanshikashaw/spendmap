@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowDown,
   ArrowUp,
-  HelpCircle,
   Home,
   LogOut,
   Menu,
@@ -20,7 +19,7 @@ const MENU_ITEMS = [
   { text: "Profile", path: "/profile", icon: <User size={20} /> },
 ];
 
-const Sidebar = ({ user, isCollapsed, setIsCollapsed }) => {
+const Sidebar = ({ user, isCollapsed, setIsCollapsed, onLogout }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const sidebarRef = useRef(null);
@@ -56,9 +55,8 @@ const Sidebar = ({ user, isCollapsed, setIsCollapsed }) => {
 
   // to logout
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+  onLogout();
+};
 
   const toggleSidebar = () => setIsCollapsed((c) => !c);
 
@@ -192,16 +190,7 @@ const Sidebar = ({ user, isCollapsed, setIsCollapsed }) => {
                 : sidebarStyles.footerContainer.expanded,
             )}
           >
-            <Link
-              className={cn(
-                sidebarStyles.footerLink.base,
-                isCollapsed && sidebarStyles.footerLink.collapsed,
-              )}
-              to="https://www.hexagondigitalservices.com/contact"
-            >
-              <HelpCircle size={20} className=" text-gray-500" />
-              {!isCollapsed && <span>Support</span>}
-            </Link>
+            
 
             <button
               onClick={handleLogout}
@@ -302,14 +291,7 @@ const Sidebar = ({ user, isCollapsed, setIsCollapsed }) => {
                 </div>
 
                 <div className={sidebarStyles.mobileFooter}>
-                  <Link
-                    onClick={() => setMobileOpen(false)}
-                    to="https://www.hexagondigitalservices.com/contact"
-                    className={sidebarStyles.mobileFooterLink}
-                  >
-                    <HelpCircle size={20} className=" text-gray-500" />
-                    <span>Support</span>
-                  </Link>
+                  
                   <button
                     onClick={handleLogout}
                     className={sidebarStyles.mobileLogoutButton}

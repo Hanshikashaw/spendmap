@@ -1,12 +1,11 @@
-import { getToken } from "../utils/auth";
 import React, { useEffect, useRef, useState } from "react";
 import { navbarStyles } from "../assets/styles";
 import img1 from "../assets/logo.png";
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
-const BASE_URL = `${import.meta.env.VITE_API_URL}/api`;
+
+
 
 const Navbar = ({ user: propUser, onLogout }) => {
   const navigate = useNavigate();
@@ -18,27 +17,7 @@ const Navbar = ({ user: propUser, onLogout }) => {
     email: "",
   };
 
-  //   to fetch the user data from server
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = getToken();
-        if (!token) return;
-
-        const response = await axios.get(`${BASE_URL}/user/me`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const userData = response.data.user || response.data;
-        setUser(userData);
-      } catch (error) {
-        console.error("Failed to load profile", error);
-      }
-    };
-
-    if (!propUser) {
-      fetchUserData();
-    }
-  }, [propUser]);
+  
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -72,7 +51,7 @@ const Navbar = ({ user: propUser, onLogout }) => {
           <div className={navbarStyles.logoImage}>
             <img src={img1} alt="logo" />
           </div>
-          <span className={navbarStyles.logoText}>Expense Tracker</span>
+          <span className={navbarStyles.logoText}>SpendMap</span>
         </div>
 
         {/* if the user is present */}
@@ -88,7 +67,7 @@ const Navbar = ({ user: propUser, onLogout }) => {
               <div className={navbarStyles.userTextContainer}>
                 <p className={navbarStyles.userName}>{user?.name || "User"}</p>
                 <p className={navbarStyles.userEmail}>
-                  {user?.email || "user@expensetracker.com"}
+                  {user?.email || "user@spendmap.com"}
                 </p>
               </div>
 
@@ -109,7 +88,7 @@ const Navbar = ({ user: propUser, onLogout }) => {
                         {user?.name || "User"}
                       </div>
                       <div className={navbarStyles.dropdownEmail}>
-                        {user?.email || "user@expensetracker.com"}
+                        {user?.email || "user@spendmap.com"}
                       </div>
                     </div>
                   </div>

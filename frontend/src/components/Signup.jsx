@@ -48,8 +48,8 @@ const Signup = ({ API_URL = import.meta.env.VITE_API_URL, onSignup }) => {
     }
     if (!password) {
       newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    } else if (password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
     }
 
     setErrors(newErrors);
@@ -132,7 +132,7 @@ const Signup = ({ API_URL = import.meta.env.VITE_API_URL, onSignup }) => {
           </div>
           <h1 className={signupStyles.headerTitle}>Create Account</h1>
           <p className={signupStyles.headerSubtitle}>
-            Join ExpenseTracker to manage your finances
+            Join SpendMap to manage your finances
           </p>
         </div>
 

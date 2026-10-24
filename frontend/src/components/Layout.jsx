@@ -1,9 +1,10 @@
 import { getToken } from "../utils/auth";
-import React, { Activity, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { styles } from "../assets/styles";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import {
+  Activity,
   ArrowDown,
   ArrowUp,
   Car,
@@ -309,6 +310,7 @@ const Layout = ({ onLogout, user }) => {
       <Navbar user={user} onLogout={onLogout} />
       <Sidebar
         user={user}
+        onLogout={onLogout}
         isCollapsed={sidebarCollapsed}
         setIsCollapsed={setSidebarCollapsed}
       />
@@ -361,8 +363,7 @@ const Layout = ({ onLogout, user }) => {
               </div>
             </div>
             <p className={styles.statCards.cardFooter}>
-              <span className=" text-green-600 font-medium">+12.5%</span> from
-              last month
+              Earned in the last 30 days
             </p>
           </div>
 
