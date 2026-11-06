@@ -25,7 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import axios from "axios";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
 const CATEGORY_ICONS = {
@@ -74,6 +74,8 @@ const safeArrayFromResponse = (res) => {
 };
 
 const Layout = ({ onLogout, user }) => {
+  const location = useLocation();
+const isDashboard = location.pathname === "/";
   const [transactions, setTransactions] = useState([]);
   const [timeFrame, setTimeFrame] = useState("monthly");
   const [loading, setLoading] = useState(false);
@@ -315,6 +317,8 @@ const Layout = ({ onLogout, user }) => {
         setIsCollapsed={setSidebarCollapsed}
       />
       <div className={styles.layout.mainContainer(sidebarCollapsed)}>
+        {isDashboard ? (
+          <>
         <div className={styles.header.container}>
           <div>
             <h1 className={styles.header.title}>Dashboard</h1>
@@ -582,6 +586,10 @@ const Layout = ({ onLogout, user }) => {
             </div>
           </div>
         </div>
+          </>
+        ) : (
+          <Outlet context={outletContext} />
+        )}
       </div>
     </div>
   );
